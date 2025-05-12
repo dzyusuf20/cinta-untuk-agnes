@@ -133,6 +133,22 @@
       opacity: 1;
       transform: none;
     }
+      .love-video {
+    max-width: 300px;
+    width: 90%;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;
+    margin: 30px auto 40px;
+    display: block;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(255, 0, 128, 0.2);
+  }
+
+  .love-video.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
   </style>
 </head>
 <body>
@@ -181,12 +197,20 @@
     Gak ada kata yang cukup untuk menggambarkan betapa berartinya kamu. Aku hanya ingin
     membuatmu bahagia setiap hari. Kalau kamu bersedia, mari kita mulai kisah cinta kita yang indah ini. 💞
   </p>
-  <div style="display: flex; justify-content: center; margin-top: 30px; margin-bottom: 40px;">
-  <video autoplay muted loop playsinline class="rounded-xl shadow-xl" style="max-width: 90%; height: auto;">
-    <source src="miloismillo.mp4" type="video/mp4" />
-    Browser kamu tidak mendukung video.
-  </video>
-</div>
+  <video id="loveVideo" class="love-video" autoplay muted loop playsinline>
+  <source src="154135-807166717_medium_5.mp4" type="video/mp4" />
+  Browser kamu tidak mendukung video.
+</video>
+
+<script>
+  // Transisi muncul saat halaman dimuat
+  window.addEventListener('DOMContentLoaded', () => {
+    const video = document.getElementById('loveVideo');
+    setTimeout(() => {
+      video.classList.add('show');
+    }, 300); // Delay dikit biar halus
+  });
+</script>
 </section>
 
 <!-- Jawaban -->
