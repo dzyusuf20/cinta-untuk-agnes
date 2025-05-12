@@ -8,6 +8,61 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
+      <style>
+  .love {
+    position: fixed;
+    top: 100%;
+    font-size: 24px;
+    color: #ff4d88;
+    animation: floatUp 3s ease-out forwards, fadeOut 3s ease-in forwards;
+    z-index: 9999;
+    pointer-events: none;
+  }
+
+  @keyframes floatUp {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-120vh) rotate(360deg);
+    }
+  }
+
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+</style>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const duration = 5000; // durasi efek 5 detik
+    const interval = 200; // interval antar love
+    const endTime = Date.now() + duration;
+
+    const spawnLove = () => {
+      if (Date.now() > endTime) return;
+
+      const love = document.createElement('span');
+      love.textContent = '❤️';
+      love.className = 'love';
+      love.style.left = Math.random() * 100 + 'vw';
+      love.style.fontSize = Math.random() * 20 + 20 + 'px';
+
+      document.body.appendChild(love);
+
+      setTimeout(() => love.remove(), 3000); // hapus setelah animasi selesai
+      setTimeout(spawnLove, interval); // teruskan efek sampai 5 detik
+    };
+
+    spawnLove();
+  });
+</script>
+
       body {
         font-family: 'Poppins', sans-serif;
         scroll-behavior: smooth;
@@ -123,13 +178,40 @@
     </section>
 
     <section id="jawaban" class="py-20 px-6 bg-white text-center">
-      <h3 class="text-2xl md:text-3xl font-semibold text-pink-500 mb-4">Jawabanmu sangat berarti 💌</h3>
-      <p class="text-lg text-gray-600 mb-6">Apapun jawabanmu, aku tetap menghargainya dan akan selalu menghormati kamu 💗</p>
-      <div class="flex justify-center gap-6">
-        <button class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full text-lg font-semibold shadow">Ya, aku mau! 💘</button>
-        <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 px-6 py-3 rounded-full text-lg font-semibold shadow">Aku belum siap...</button>
-      </div>
-    </section>
+  <h3 class="text-2xl md:text-3xl font-semibold text-pink-500 mb-4">Jawabanmu sangat berarti 💌</h3>
+  <p class="text-lg text-gray-600 mb-6">
+    Apapun jawabanmu, aku tetap menghargainya dan akan selalu menghormati kamu 💗
+  </p>
+  <div class="flex justify-center gap-6">
+    <button 
+      onclick="confirmRedirect(true)" 
+      class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full text-lg font-semibold shadow">
+      Ya, aku mau! 💘
+    </button>
+    <button 
+      onclick="confirmRedirect(false)" 
+      class="bg-gray-300 hover:bg-gray-400 text-gray-800 px-6 py-3 rounded-full text-lg font-semibold shadow">
+      Aku belum siap...
+    </button>
+  </div>
+</section>
+
+<script>
+  function confirmRedirect(isYes) {
+    const text = isYes 
+      ? "Kamu yakin ingin bilang 'Ya'? Ini akan membuka WhatsApp untuk ngobrol langsung denganku 💕"
+      : "Kamu belum siap? Gak apa-apa... Klik OK kalau mau ngobrol lewat WhatsApp.";
+
+    if (confirm(text)) {
+      const phone = "6282277717787";
+      const message = isYes 
+        ? "Hai Yusuf, aku setuju! Aku mau jadi pacarmu 💖✨" 
+        : "Yusuf, aku belum siap... Tapi terima kasih ya atas semuanya 🌸";
+        
+      window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, "_blank");
+    }
+  }
+</script>
 
     <!-- Kartu Tarot dengan Animasi Flip -->
     <section class="py-20 px-6 text-center">
