@@ -310,6 +310,11 @@
 
   </style>
 </head>
+<!-- Tombol Musik -->
+<button id="play-music-btn" class="fixed top-4 left-4 z-50 bg-pink-400 text-white px-4 py-2 rounded-full shadow-lg hover:bg-pink-500 transition">
+  💖 Putar Musik
+</button>
+
 <body>
 
 <!-- Button Toggle Mode Malam -->
@@ -332,23 +337,27 @@
 </script>
 
 <div class="fixed top-4 left-4 z-50 hidden">
-  <audio id="bg-music" loop playsinline>
-    <source src="https://raw.githubusercontent.com/dzyusuf20/cinta-untuk-agnes/main/nothings-gonna-change-my-love-for-you-justin-bieber-ai.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio>
+<audio id="bg-music" loop playsinline>
+  <source src="https://raw.githubusercontent.com/dzyusuf20/cinta-untuk-agnes/main/nothings-gonna-change-my-love-for-you-justin-bieber-ai.mp3" type="audio/mp3">
+  Your browser does not support the audio element.
+</audio>
+
 </div>
-
 <script>
-  // Memutar musik setelah interaksi pertama pengguna
-  document.addEventListener('DOMContentLoaded', function () {
-    const music = document.getElementById('bg-music');
+  const playBtn = document.getElementById('play-music-btn');
+  const music = document.getElementById('bg-music');
 
-    function playMusic() {
-      music.play().catch(e => console.log('Autoplay blocked:', e));
-      document.removeEventListener('click', playMusic); // hanya sekali
-    }
-
-    document.addEventListener('click', playMusic);
+  playBtn.addEventListener('click', () => {
+    music.play()
+      .then(() => {
+        playBtn.textContent = '🎵 Musik Berjalan';
+        playBtn.disabled = true;
+        playBtn.classList.add('opacity-70', 'cursor-not-allowed');
+      })
+      .catch(e => {
+        alert('Gagal memutar musik, coba klik lagi.');
+        console.error(e);
+      });
   });
 </script>
 
