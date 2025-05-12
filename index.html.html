@@ -9,12 +9,11 @@
     <style>
       body {
         font-family: 'Poppins', sans-serif;
-        scroll-behavior: smooth;
         margin: 0;
         padding: 0;
       }
 
-      /* Background warna lembut yang bergerak */
+      /* Background animasi warna lembut */
       body {
         background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
         background-size: 400% 400%;
@@ -27,16 +26,11 @@
         100% { background-position: 0% 50%; }
       }
 
-      .backdrop {
-        backdrop-filter: blur(4px);
-        background-color: rgba(255, 255, 255, 0.6);
-      }
-
-      /* Efek Parallax */
+      /* Efek Parallax untuk Header */
       .parallax {
-        background-attachment: fixed;
-        background-size: cover;
-        background-position: center;
+        background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+        background-size: 400% 400%;
+        animation: gradientBackground 15s ease infinite;
         height: 100vh;
         display: flex;
         justify-content: center;
@@ -45,7 +39,7 @@
         color: #fff;
       }
 
-      /* Animasi tombol */
+      /* Efek Animasi Tombol */
       .btn {
         padding: 12px 30px;
         border: none;
@@ -66,7 +60,7 @@
         transform: scale(0.9);
       }
 
-      /* Animasi teks */
+      /* Animasi Fade-in untuk elemen */
       .fade-in {
         opacity: 0;
         transform: translateY(20px);
@@ -76,23 +70,6 @@
       .fade-in.visible {
         opacity: 1;
         transform: translateY(0);
-      }
-
-      /* Typewriter effect */
-      .typewriter {
-        overflow: hidden;
-        white-space: nowrap;
-        border-right: 3px solid pink;
-        animation: typing 3s steps(40, end), blink 0.75s step-end infinite;
-      }
-
-      @keyframes typing {
-        from { width: 0 }
-        to { width: 100% }
-      }
-
-      @keyframes blink {
-        50% { border-color: transparent }
       }
     </style>
   </head>
@@ -104,7 +81,7 @@
     </audio>
 
     <!-- Parallax Section -->
-    <header class="parallax" style="background-image: url('https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=1740&q=80');">
+    <header class="parallax">
       <div class="backdrop rounded-xl p-10 text-center shadow-xl max-w-2xl">
         <h1 class="text-4xl md:text-6xl font-bold text-pink-600 drop-shadow-sm mb-4 fade-in">Hai, AGNES SEREVINA SIREGAR 💐</h1>
         <p class="text-lg md:text-xl text-gray-700 leading-relaxed fade-in">
@@ -145,6 +122,7 @@
     </footer>
 
     <script>
+      // Fade-in effect for elements on scroll
       const faders = document.querySelectorAll('.fade-in');
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
