@@ -12,23 +12,19 @@
         font-family: 'Poppins', sans-serif;
         scroll-behavior: smooth;
       }
-      .bg-hero {
-        background-image: url('https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=1740&q=80');
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-      }
-      .backdrop {
-        backdrop-filter: blur(4px);
-        background-color: rgba(255, 255, 255, 0.6);
-      }
 
       /* Kartu Tarot Animasi Flip */
+      .card-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 20px 0;
+      }
+
       .card {
-        width: 250px;
-        height: 350px;
+        width: 200px;
+        height: 280px;
         perspective: 1000px;
-        margin: 0 auto;
         cursor: pointer;
       }
 
@@ -115,15 +111,60 @@
     <!-- Kartu Tarot dengan Animasi Flip -->
     <section class="py-20 px-6 text-center">
       <h3 class="text-2xl md:text-3xl font-semibold text-pink-600 mb-4">Kartu Tarot Untukmu 💖</h3>
-      <div class="card">
-        <div class="card-inner">
-          <!-- Bagian Depan Kartu -->
-          <div class="card-front">
-            <p>"Tantangan hidup mungkin datang, tapi bersama kita bisa menghadapinya. Jangan takut untuk mencintai, karena cinta akan memberi kekuatan."</p>
+      <div class="card-container">
+        <!-- 5 Kartu Tarot -->
+        <div class="card" data-card="0">
+          <div class="card-inner">
+            <div class="card-front">
+              <p>"Tantangan hidup mungkin datang, tapi bersama kita bisa menghadapinya."</p>
+            </div>
+            <div class="card-back">
+              <p>"Jangan takut untuk mencintai, karena cinta akan memberi kekuatan."</p>
+            </div>
           </div>
-          <!-- Bagian Belakang Kartu -->
-          <div class="card-back">
-            <p>"Cinta sejati bukan hanya tentang kebahagiaan, tapi tentang tumbuh bersama, saling mendukung, dan berbagi impian. Aku siap untuk itu denganmu."</p>
+        </div>
+
+        <div class="card" data-card="1">
+          <div class="card-inner">
+            <div class="card-front">
+              <p>"Cinta akan datang di waktu yang tepat."</p>
+            </div>
+            <div class="card-back">
+              <p>"Setiap hal memiliki waktunya, mari jalani dengan sabar."</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-card="2">
+          <div class="card-inner">
+            <div class="card-front">
+              <p>"Kesuksesan menantimu, tetap berusaha!"</p>
+            </div>
+            <div class="card-back">
+              <p>"Jangan berhenti berusaha, masa depan cerah menanti."</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-card="3">
+          <div class="card-inner">
+            <div class="card-front">
+              <p>"Aku masih menyayangimu, maukah kita mencoba lagi?"</p>
+            </div>
+            <div class="card-back">
+              <p>"Mungkin ini saatnya kita kembali menjadi kita."</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-card="4">
+          <div class="card-inner">
+            <div class="card-front">
+              <p>"Aku menghargai setiap momen kita."</p>
+            </div>
+            <div class="card-back">
+              <p>"Semoga selalu ada kebahagiaan untukmu, aku selalu mendukungmu."</p>
+            </div>
           </div>
         </div>
       </div>
@@ -134,8 +175,7 @@
     </footer>
 
     <script>
-      // Kartu Tarot
-      const cards = document.querySelectorAll('.card');
+      // Pesan untuk kartu tarot
       const messages = [
         "Semangat dan jangan pernah menyerah!",
         "Cinta akan datang di waktu yang tepat!",
@@ -143,15 +183,31 @@
         "Aku masih menyayangimu, maukah kita mencoba lagi?",
         "Mungkin ini saatnya kita kembali menjadi kita.",
         "Aku menghargai setiap momen kita, semoga selalu ada kebahagiaan untukmu.",
+        "Jangan ragu untuk bertindak, keberhasilan menantimu!",
+        "Berusahalah, karena setiap usaha pasti ada hasilnya.",
+        "Cinta adalah petualangan yang indah, mari kita jalani bersama!",
+        "Sabar itu indah, dan cinta akan datang ketika waktunya tepat.",
+        "Kamu punya kekuatan untuk mengatasi segala tantangan.",
+        "Mari kita berjalan bersama menuju masa depan yang lebih cerah.",
+        "Jangan takut mencoba, karena kegagalan adalah bagian dari perjalanan.",
+        "Aku akan selalu mendukungmu, apapun yang terjadi.",
+        "Jangan takut untuk berubah, karena perubahan membawa kebaikan.",
+        "Kamu lebih kuat dari yang kamu kira, percaya pada dirimu.",
+        "Cinta itu indah, dan aku ingin berbagi keindahan itu denganmu.",
+        "Kesuksesan bukan hanya tentang hasil, tapi juga perjalanan.",
+        "Tantangan adalah kesempatan untuk tumbuh dan belajar.",
+        "Mimpi besar bisa tercapai dengan langkah kecil yang konsisten."
       ];
 
-      // Tambahkan pesan ke kartu
-      cards.forEach((card, index) => {
+      // Fungsi untuk menangani klik kartu dan mengganti pesan
+      document.querySelectorAll('.card').forEach((card, index) => {
         card.addEventListener('click', () => {
-          const cardInner = card.querySelector('.card-inner');
-          const cardFront = card.querySelector('.card-front');
-          cardFront.innerHTML = `<h3 class="text-2xl font-bold text-white">${messages[index]}</h3>`;
-          gsap.from(cardInner, { duration: 1, scale: 0, ease: 'bounce' });
+          gsap.to(card, { scale: 0.5, duration: 0.3, ease: "power2.inOut", onComplete: () => {
+            // Mengubah teks kartu setelah animasi selesai
+            const front = card.querySelector('.card-front p');
+            front.textContent = messages[index % messages.length];
+            gsap.to(card, { scale: 1, duration: 0.3, ease: "power2.inOut" });
+          }});
         });
       });
     </script>
