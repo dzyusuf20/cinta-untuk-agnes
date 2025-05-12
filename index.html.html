@@ -8,60 +8,29 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-      <style>
-  .love {
-    position: fixed;
-    top: 100%;
-    font-size: 24px;
-    color: #ff4d88;
-    animation: floatUp 3s ease-out forwards, fadeOut 3s ease-in forwards;
-    z-index: 9999;
-    pointer-events: none;
+      .love {
+  position: fixed;
+  color: #ff69b4;
+  font-size: 24px;
+  pointer-events: none;
+  animation: fall 5s linear forwards;
+  z-index: 40;
+  opacity: 0;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
   }
-
-  @keyframes floatUp {
-    0% {
-      transform: translateY(0);
-    }
-    100% {
-      transform: translateY(-120vh) rotate(360deg);
-    }
+  30% {
+    opacity: 1;
   }
-
-  @keyframes fadeOut {
-    0% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
   }
-</style>
-
-<script>
-  window.addEventListener('DOMContentLoaded', () => {
-    const duration = 5000; // durasi efek 5 detik
-    const interval = 200; // interval antar love
-    const endTime = Date.now() + duration;
-
-    const spawnLove = () => {
-      if (Date.now() > endTime) return;
-
-      const love = document.createElement('span');
-      love.textContent = '❤️';
-      love.className = 'love';
-      love.style.left = Math.random() * 100 + 'vw';
-      love.style.fontSize = Math.random() * 20 + 20 + 'px';
-
-      document.body.appendChild(love);
-
-      setTimeout(() => love.remove(), 3000); // hapus setelah animasi selesai
-      setTimeout(spawnLove, interval); // teruskan efek sampai 5 detik
-    };
-
-    spawnLove();
-  });
-</script>
+}
 
       body {
         font-family: 'Poppins', sans-serif;
@@ -316,4 +285,32 @@
       });
     </script>
   </body>
+  <script>
+  function createLove() {
+    const love = document.createElement('div');
+    love.classList.add('love');
+    love.innerText = '💖';
+
+    // Posisi love acak secara horizontal
+    love.style.left = Math.random() * window.innerWidth + 'px';
+
+    // Ukuran acak
+    const size = Math.random() * 20 + 16;
+    love.style.fontSize = size + 'px';
+
+    // Delay sedikit sebelum muncul agar bertahap
+    const delay = Math.random() * 5000;
+    setTimeout(() => {
+      document.body.appendChild(love);
+      setTimeout(() => {
+        love.remove();
+      }, 5000);
+    }, delay);
+  }
+
+  // Tabur love secara bertahap selama 5 detik
+  for (let i = 0; i < 100; i++) {
+    createLove();
+  }
+</script>
 </html>
