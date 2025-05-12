@@ -107,6 +107,8 @@
   <body>
 
   <!-- SoundCloud Autoplay -->
+  <!-- Musik romantis SoundCloud (auto play & disembunyikan) -->
+<div class="fixed bottom-4 right-4 w-full max-w-xs z-50 shadow-lg rounded overflow-hidden">
   <iframe 
     width="1" 
     height="1" 
@@ -114,8 +116,10 @@
     scrolling="no" 
     frameborder="no" 
     allow="autoplay" 
-    src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1603928202&auto_play=true&hide_related=false&show_comments=false&show_user=false&show_reposts=false&visual=false">
+    src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1603928202&auto_play=true&show_artwork=false&hide_related=true&show_comments=false&show_user=false&visual=false">
   </iframe>
+</div>
+
 
   <!-- Efek taburan love -->
   <script>
@@ -301,5 +305,74 @@
       });
     });
   </script>
+  <style>
+  .heart {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background-color: pink;
+    transform: rotate(45deg);
+    animation: fall 5s linear;
+    z-index: 9999;
+    opacity: 0.8;
+  }
+
+  .heart::before,
+  .heart::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: pink;
+    border-radius: 50%;
+  }
+
+  .heart::before {
+    top: -10px;
+    left: 0;
+  }
+
+  .heart::after {
+    left: -10px;
+    top: 0;
+  }
+
+  @keyframes fall {
+    0% {
+      transform: translateY(-100px) rotate(45deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh) rotate(45deg);
+      opacity: 0;
+    }
+  }
+</style>
+
+<script>
+  // Fungsi untuk membuat satu hati jatuh
+  function createHeart() {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 5000);
+  }
+
+  // Hanya jalankan efek selama 5 detik
+  const duration = 5000;
+  const interval = 200;
+
+  const intervalId = setInterval(createHeart, interval);
+
+  setTimeout(() => {
+    clearInterval(intervalId);
+  }, duration);
+</script>
+
 </body>
 </html>
