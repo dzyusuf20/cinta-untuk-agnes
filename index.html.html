@@ -9,127 +9,127 @@
     <style>
       body {
         font-family: 'Poppins', sans-serif;
-        margin: 0;
-        padding: 0;
+        scroll-behavior: smooth;
+      }
+      .bg-hero {
+        background-image: url('https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=1740&q=80');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+      }
+      .backdrop {
+        backdrop-filter: blur(4px);
+        background-color: rgba(255, 255, 255, 0.6);
       }
 
-      /* Background animasi warna lembut */
-      body {
-        background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
-        background-size: 400% 400%;
-        animation: gradientBackground 15s ease infinite;
+      /* Kartu Tarot Animasi Flip */
+      .card {
+        width: 250px;
+        height: 350px;
+        perspective: 1000px;
+        margin: 0 auto;
       }
 
-      @keyframes gradientBackground {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
+      .card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        transform: rotateY(0deg);
+        transition: transform 1s;
       }
 
-      /* Efek Parallax untuk Header */
-      .parallax {
-        background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
-        background-size: 400% 400%;
-        animation: gradientBackground 15s ease infinite;
-        height: 100vh;
+      .card:hover .card-inner {
+        transform: rotateY(180deg);
+      }
+
+      .card-front,
+      .card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
         display: flex;
         justify-content: center;
         align-items: center;
-        text-align: center;
-        color: #fff;
-      }
-
-      /* Efek Animasi Tombol */
-      .btn {
-        padding: 12px 30px;
-        border: none;
-        border-radius: 50px;
-        background-color: #ff7b9e;
-        color: white;
         font-size: 18px;
-        cursor: pointer;
-        transition: transform 0.3s ease, background-color 0.3s ease;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
       }
 
-      .btn:hover {
-        transform: scale(1.1);
-        background-color: #ff477e;
+      .card-front {
+        background-color: #ffb6c1;
       }
 
-      .btn:active {
-        transform: scale(0.9);
+      .card-back {
+        background-color: #ff80ab;
+        transform: rotateY(180deg);
+        color: white;
       }
 
-      /* Animasi Fade-in untuk elemen */
-      .fade-in {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 1.5s ease-in-out;
-      }
-
-      .fade-in.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
     </style>
   </head>
-  <body class="text-gray-800">
-
-    <!-- Auto-play romantic background music -->
-    <audio autoplay loop>
+  <body class="text-gray-800 bg-white">
+    <audio id="romantic-audio" autoplay loop muted>
       <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg" />
     </audio>
 
-    <!-- Parallax Section -->
-    <header class="parallax">
+    <header class="h-screen flex items-center justify-center bg-hero">
       <div class="backdrop rounded-xl p-10 text-center shadow-xl max-w-2xl">
-        <h1 class="text-4xl md:text-6xl font-bold text-pink-600 drop-shadow-sm mb-4 fade-in">Hai, AGNES SEREVINA SIREGAR 💐</h1>
-        <p class="text-lg md:text-xl text-gray-700 leading-relaxed fade-in">
+        <h1 class="text-4xl md:text-6xl font-bold text-pink-600 drop-shadow-sm mb-4">Hai, AGNES SEREVINA SIREGAR 💐</h1>
+        <p class="text-lg md:text-xl text-gray-700 leading-relaxed">
           Aku, <span class="font-semibold text-pink-500">Yusuf Deardo Purba</span>,<br />
           Sejak kenal kamu, hatiku nggak pernah sama. Kamu baik, cantik, dan selalu bikin aku kagum. <br />
           Aku nulis ini bukan karena iseng, tapi karena <span class="font-semibold">serius</span>.
         </p>
-        <div class="mt-8 fade-in">
-          <a href="#jawaban" class="btn">
+        <div class="mt-8">
+          <a
+            href="#jawaban"
+            class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300"
+          >
             Mau nggak jadi pacarku? 💖
           </a>
         </div>
       </div>
     </header>
 
-    <!-- Cinta Section -->
     <section class="py-20 px-6 bg-pink-50 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold text-pink-600 mb-6 fade-in">Kamu itu istimewa ✨</h2>
-      <p class="max-w-2xl mx-auto text-lg text-gray-700 fade-in">
+      <h2 class="text-3xl md:text-4xl font-bold text-pink-600 mb-6">Kamu itu istimewa ✨</h2>
+      <p class="max-w-2xl mx-auto text-lg text-gray-700">
         Gak ada kata yang cukup untuk menggambarkan betapa berartinya kamu. Aku hanya ingin
         membuatmu bahagia setiap hari. Kalau kamu bersedia, mari kita mulai kisah cinta kita yang indah ini. 💞
       </p>
     </section>
 
-    <!-- Jawaban Section -->
     <section id="jawaban" class="py-20 px-6 bg-white text-center">
-      <h3 class="text-2xl md:text-3xl font-semibold text-pink-500 mb-4 fade-in">Jawabanmu sangat berarti 💌</h3>
-      <p class="text-lg text-gray-600 mb-6 fade-in">Apapun jawabanmu, aku tetap menghargainya dan akan selalu menghormati kamu 💗</p>
+      <h3 class="text-2xl md:text-3xl font-semibold text-pink-500 mb-4">Jawabanmu sangat berarti 💌</h3>
+      <p class="text-lg text-gray-600 mb-6">Apapun jawabanmu, aku tetap menghargainya dan akan selalu menghormati kamu 💗</p>
       <div class="flex justify-center gap-6">
-        <button class="btn fade-in">Ya, aku mau! 💘</button>
-        <button class="btn fade-in">Aku belum siap...</button>
+        <button class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full text-lg font-semibold shadow">Ya, aku mau! 💘</button>
+        <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 px-6 py-3 rounded-full text-lg font-semibold shadow">Aku belum siap...</button>
       </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Kartu Tarot dengan Animasi Flip -->
+    <section class="py-20 px-6 text-center">
+      <h3 class="text-2xl md:text-3xl font-semibold text-pink-600 mb-4">Kartu Tarot Untukmu 💖</h3>
+      <div class="card">
+        <div class="card-inner">
+          <!-- Bagian Depan Kartu -->
+          <div class="card-front">
+            <p>"Tantangan hidup mungkin datang, tapi bersama kita bisa menghadapinya. Jangan takut untuk mencintai, karena cinta akan memberi kekuatan."</p>
+          </div>
+          <!-- Bagian Belakang Kartu -->
+          <div class="card-back">
+            <p>"Cinta sejati bukan hanya tentang kebahagiaan, tapi tentang tumbuh bersama, saling mendukung, dan berbagi impian. Aku siap untuk itu denganmu."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <footer class="py-10 text-center text-sm text-gray-400">
       Dibuat dengan ❤️ oleh Yusuf Deardo Purba — 2025
     </footer>
-
-    <script>
-      // Fade-in effect for elements on scroll
-      const faders = document.querySelectorAll('.fade-in');
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) entry.target.classList.add('visible');
-        });
-      });
-      faders.forEach(fader => observer.observe(fader));
-    </script>
   </body>
 </html>
