@@ -4,26 +4,93 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Untuk Agnes 💖</title>
-<meta name="description" content="Halaman cinta dari Yusuf Deardo Purba untuk Agnes Serevina Siregar. Sebuah ajakan romantis dengan musik, animasi, dan kartu tarot." />
-<meta property="og:title" content="Untuk Agnes 💖" />
-<meta property="og:description" content="Yusuf Deardo Purba ingin menyampaikan rasa cinta kepada Agnes Serevina Siregar lewat halaman romantis ini." />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://i.imgur.com/YourImage.png" />
+  <meta name="description" content="Halaman cinta dari Yusuf Deardo Purba untuk Agnes Serevina Siregar. Sebuah ajakan romantis dengan musik, animasi, dan kartu tarot." />
+  <meta property="og:title" content="Untuk Agnes 💖" />
+  <meta property="og:description" content="Yusuf Deardo Purba ingin menyampaikan rasa cinta kepada Agnes Serevina Siregar lewat halaman romantis ini." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://i.imgur.com/YourImage.png" />
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    
+      .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .card {
+    width: 180px;
+    height: 260px;
+    perspective: 1000px;
+    cursor: pointer;
+  }
+
+  .card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+
+  .card.flipped .card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .card-front,
+  .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 1rem;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    background-color: #fff0f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1rem;
+  }
+
+  .card-front {
+    background-color: #ffe6ec;
+  }
+
+  .card-back {
+    background-color: #f9d5e5;
+    transform: rotateY(180deg);
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s ease-out;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+    #jawaban {
+  scroll-margin-top: 100px;
+}
+
     body {
       font-family: 'Poppins', sans-serif;
       scroll-behavior: smooth;
       overflow-x: hidden;
       background: linear-gradient(#fff0f5, #ffe4e1);
+      transition: background 0.5s, color 0.5s;
     }
 
-    /* Parallax Section */
     .bg-hero {
       background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
       background-attachment: fixed;
@@ -31,7 +98,6 @@
       background-size: cover;
     }
 
-    /* Sparkle Effect */
     .sparkle {
       position: fixed;
       top: -10px;
@@ -55,7 +121,6 @@
       }
     }
 
-    /* Card styles */
     .card-container {
       display: flex;
       justify-content: center;
@@ -108,7 +173,6 @@
       transform: rotateY(180deg);
     }
 
-    /* Rainbow Text */
     .rainbow-text {
       background-image: linear-gradient(to right, #ff6ec4, #7873f5, #4ade80, #facc15, #fb923c, #ef4444);
       -webkit-background-clip: text;
@@ -122,7 +186,6 @@
       100% { background-position: 100% 50%; }
     }
 
-    /* Scroll Fade-in */
     .fade-in {
       opacity: 0;
       transform: translateY(30px);
@@ -133,28 +196,128 @@
       opacity: 1;
       transform: none;
     }
-  .love-video {
-    max-width: 300px;
-    width: 90%;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 1s ease, transform 1s ease;
-    margin: 30px auto 40px;
-    display: block;
-    border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(255, 0, 128, 0.2);
-    background: rgba(255, 192, 203, 0.2); /* Soft pink background */
-    backdrop-filter: blur(8px); /* Blur belakang */
-    padding: 8px; /* Spasi dalam */
+
+    .love-video {
+      max-width: 300px;
+      width: 90%;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease, transform 1s ease;
+      margin: 30px auto 40px;
+      display: block;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(255, 0, 128, 0.2);
+      background: rgba(255, 192, 203, 0.2);
+      backdrop-filter: blur(8px);
+      padding: 8px;
+    }
+
+    .love-video.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Animasi Bunga Mekar */
+    @keyframes flowerBloom {
+      0% {
+        transform: scale(0.2);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .flower {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 50px;
+      height: 50px;
+      background: radial-gradient(circle, #ff77ff, #ff4081);
+      border-radius: 50%;
+      animation: flowerBloom 1.5s ease-out infinite;
+    }
+
+    /* Hujan Kelopak Mawar */
+    @keyframes petalFall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .petal {
+      position: absolute;
+      top: -30px;
+      width: 15px;
+      height: 15px;
+      background: radial-gradient(circle, #ff4081, #ff77ff);
+      border-radius: 50%;
+      animation: petalFall 5s linear infinite;
+    }
+
+    /* Mode Malam */
+    .night-mode {
+      background: linear-gradient(#2a2a5e, #6a4f9f);
+      color: #fff;
+    }
+    
+    .night-mode .card-front {
+      background-color: #3b3b8d;
+    }
+    
+    .night-mode .card-back {
+      background-color: #7e5c9a;
+    }
+      .flower-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    height: 150px;
   }
 
-  .love-video.show {
-    opacity: 1;
-    transform: translateY(0);
+  .flower {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background: url('https://cdn-icons-png.flaticon.com/512/7096/7096435.png') no-repeat center center / contain;
+    animation: floatUp 6s ease-in-out infinite;
+    opacity: 0.7;
   }
+
+  @keyframes floatUp {
+    0% {
+      transform: translateY(100px) scale(0.8);
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-150px) scale(1.2);
+      opacity: 0;
+    }
+  }
+
   </style>
 </head>
 <body>
+
+<!-- Button Toggle Mode Malam -->
+<div class="fixed top-4 right-4 z-50">
+  <button id="toggleNightMode" class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-full">
+    🌙
+  </button>
+</div>
 
 <!-- Sparkle Animation -->
 <script>
@@ -177,7 +340,7 @@
 </div>
 
 <!-- Hero Section -->
-<header class="h-screen flex items-center justify-center bg-hero">
+<header class="min-h-screen flex items-center justify-center bg-hero">
   <div class="bg-white bg-opacity-70 backdrop-blur-md rounded-xl p-10 text-center shadow-xl max-w-2xl">
     <h1 class="text-4xl md:text-6xl font-bold rainbow-text mb-4">Hai, AGNES SEREVINA SIREGAR 💐</h1>
     <p class="text-lg md:text-xl text-gray-700 leading-relaxed">
@@ -185,36 +348,45 @@
       Sejak kenal kamu, hatiku nggak pernah sama. Kamu baik, cantik, dan selalu bikin aku kagum.<br>
       Aku nulis ini bukan karena iseng, tapi karena <span class="font-semibold">serius</span>.
     </p>
-<div class="mt-8 flex justify-center">
-  <a href="#jawaban" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-6 rounded-full shadow-lg transition duration-300 text-base sm:text-lg md:text-xl">
-    Mau nggak jadi pacarku? 💖
-  </a>
-</div>
+    <div class="mt-8 flex justify-center">
+      <a href="#jawaban" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-6 rounded-full shadow-lg transition duration-300 text-base sm:text-lg md:text-xl">
+        Mau nggak jadi pacarku? 💖
+      </a>
+    </div>
   </div>
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce text-2xl text-pink-500">
+  ⬇️
+</div>
 </header>
 
 <!-- Penegasan Cinta -->
 <section class="py-20 px-6 bg-pink-50 text-center fade-in">
+<div class="flower-container">
+  <div class="flower" style="left: 10%; animation-delay: 0s;"></div>
+  <div class="flower" style="left: 25%; animation-delay: 1s;"></div>
+  <div class="flower" style="left: 40%; animation-delay: 2s;"></div>
+  <div class="flower" style="left: 60%; animation-delay: 3s;"></div>
+  <div class="flower" style="left: 75%; animation-delay: 4s;"></div>
+  <div class="flower" style="left: 90%; animation-delay: 5s;"></div>
+</div>
+
   <h2 class="text-3xl md:text-4xl font-bold text-pink-600 mb-6">Kamu itu istimewa ✨</h2>
   <p class="max-w-2xl mx-auto text-lg text-gray-700">
     Gak ada kata yang cukup untuk menggambarkan betapa berartinya kamu. Aku hanya ingin
     membuatmu bahagia setiap hari. Kalau kamu bersedia, mari kita mulai kisah cinta kita yang indah ini. 💞
   </p>
-<video id="loveVideo" class="love-video" autoplay muted loop playsinline>
-  <source src="miloismillo.mp4" type="video/mp4" />
-  Browser kamu tidak mendukung video.
-</video>
-
-
-<script>
-  // Transisi muncul saat halaman dimuat
-  window.addEventListener('DOMContentLoaded', () => {
-    const video = document.getElementById('loveVideo');
-    setTimeout(() => {
-      video.classList.add('show');
-    }, 300); // Delay dikit biar halus
-  });
-</script>
+  <video id="loveVideo" class="love-video" autoplay muted loop playsinline>
+    <source src="miloismillo.mp4" type="video/mp4" />
+    Browser kamu tidak mendukung video.
+  </video>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const video = document.getElementById('loveVideo');
+      setTimeout(() => {
+        video.classList.add('show');
+      }, 300);
+    });
+  </script>
 </section>
 
 <!-- Jawaban -->
@@ -224,60 +396,110 @@
     Apapun jawabanmu, aku tetap menghargainya dan akan selalu menghormati kamu 💗
   </p>
   <div class="flex flex-col sm:flex-row justify-center gap-6">
-    <button onclick="confirmRedirect(true)" class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full text-lg font-semibold shadow">
-      Ya, aku mau! 💘
-    </button>
-    <button onclick="confirmRedirect(false)" class="bg-gray-300 hover:bg-gray-400 text-gray-800 px-6 py-3 rounded-full text-lg font-semibold shadow">
-      Aku belum siap...
-    </button>
+    <button onclick="confirmRedirect(true)" class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full text-lg font-semibold shadow-lg transition duration-300">Ya, aku mau💌</button>
+    <button onclick="confirmRedirect(false)" class="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-full text-lg font-semibold shadow-lg transition duration-300">Tidak, maaf aku belum siap</button>
   </div>
 </section>
 
-<!-- Script Konfirmasi -->
 <script>
-  function confirmRedirect(isYes) {
-    const text = isYes 
-      ? "Yakin mau bilang 'Ya'? Ini akan buka WhatsApp buat ngobrol langsung sama aku 💕"
-      : "Kamu belum siap? Gak apa-apa... Klik OK kalau mau tetap ngobrol di WhatsApp.";
-    if (confirm(text)) {
-      const phone = "6282277717787";
-      const message = isYes 
-        ? "Hai Yusuf, aku setuju! Aku mau jadi pacarmu 💖✨" 
-        : "Yusuf, aku belum siap... Tapi terima kasih ya atas semuanya 🌸";
-      window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, "_blank");
+  function confirmRedirect(response) {
+    if (response) {
+      // Arahkan ke link WhatsApp dengan pesan "Ya, aku mau..."
+      window.location.href = 'https://wa.me/6282277717787?text=Ya%2C%20aku%20mau%20dan%20menerima%20ajakan%20mu%2C%20sekarang%20kita%20pacaran%20%F0%9F%92%95%20%F0%9F%98%8D';
+    } else {
+      // Arahkan ke WhatsApp dengan pesan "Tidak, saya belum siap :)"
+      window.location.href = 'https://wa.me/6282277717787?text=Tidak%2C%20saya%20belum%20siap%20%3A%29';
     }
   }
 </script>
 
+
+<!-- Kartu Tarot -->
 <!-- Kartu Tarot -->
 <section class="py-20 px-6 text-center fade-in">
   <h3 class="text-2xl md:text-3xl font-semibold text-pink-600 mb-4">Kartu Tarot Untukmu 💖</h3>
   <div class="card-container">
-    <!-- ulangi 5x -->
-    <div class="card"><div class="card-inner"><div class="card-front">"Tantangan hidup mungkin datang..."</div><div class="card-back">"Cinta memberi kekuatan."</div></div></div>
-    <div class="card"><div class="card-inner"><div class="card-front">"Cinta akan datang di waktu tepat."</div><div class="card-back">"Mari jalani dengan sabar."</div></div></div>
-    <div class="card"><div class="card-inner"><div class="card-front">"Kesuksesan menantimu."</div><div class="card-back">"Masa depan cerah menanti."</div></div></div>
-    <div class="card"><div class="card-inner"><div class="card-front">"Aku masih menyayangimu."</div><div class="card-back">"Saatnya kembali jadi kita."</div></div></div>
-    <div class="card"><div class="card-inner"><div class="card-front">"Aku menghargai momen kita."</div><div class="card-back">"Selalu dukungmu."</div></div></div>
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">"Tantangan hidup mungkin datang..."</div>
+        <div class="card-back">"Cinta memberi kekuatan."</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">"Cinta akan datang di waktu tepat."</div>
+        <div class="card-back">"Mari jalani dengan sabar."</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">"Kesuksesan menantimu."</div>
+        <div class="card-back">"Masa depan cerah menanti."</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">"Aku masih menyayangimu."</div>
+        <div class="card-back">"Saatnya kembali jadi kita."</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">"Aku menghargai momen kita."</div>
+        <div class="card-back">"Selalu dukungmu."</div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- Footer -->
-<footer class="py-10 text-center text-sm text-gray-400">
-  Dibuat dengan ❤️ oleh Yusuf Deardo Purba — 2025
-</footer>
+<!-- Flower Animation -->
+<script>
+  let flowerContainer = document.createElement('div');
+  flowerContainer.classList.add('flowers');
+  document.body.appendChild(flowerContainer);
 
-<!-- Flip card -->
+  setInterval(() => {
+    const flower = document.createElement('div');
+    flower.classList.add('flower');
+    flower.style.left = Math.random() * window.innerWidth + 'px';
+    flowerContainer.appendChild(flower);
+    setTimeout(() => flower.remove(), 1500);
+  }, 400);
+</script>
+
+<!-- Petal Animation -->
+<script>
+  setInterval(() => {
+    const petal = document.createElement('div');
+    petal.classList.add('petal');
+    petal.style.left = Math.random() * window.innerWidth + 'px';
+    document.body.appendChild(petal);
+    setTimeout(() => petal.remove(), 5000);
+  }, 300);
+</script>
+
+<!-- Mode Malam -->
+<script>
+  const nightModeButton = document.getElementById('toggleNightMode');
+  nightModeButton.addEventListener('click', () => {
+    document.body.classList.toggle('night-mode');
+    nightModeButton.textContent = document.body.classList.contains('night-mode') ? '🌞' : '🌙';
+  });
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll('.fade-in').forEach(el => {
+      el.classList.add('visible');
+    });
+  });
+</script>
 <script>
   document.querySelectorAll('.card').forEach(card => {
     card.addEventListener('click', () => {
       card.classList.toggle('flipped');
     });
   });
-</script>
 
-<!-- Scroll Animasi -->
-<script>
   const faders = document.querySelectorAll('.fade-in');
   const appearOptions = { threshold: 0.3 };
   const appearOnScroll = new IntersectionObserver(function(entries, observer) {
@@ -287,6 +509,7 @@
       observer.unobserve(entry.target);
     });
   }, appearOptions);
+
   faders.forEach(fader => {
     appearOnScroll.observe(fader);
   });
