@@ -1,134 +1,157 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Untuk Agnes</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    /* Transisi warna latar belakang */
-    body {
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
-      background-size: 400% 400%;
-      animation: gradientBackground 15s ease infinite;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Untuk Agnes 💖</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+        scroll-behavior: smooth;
+        margin: 0;
+        padding: 0;
+      }
 
-    @keyframes gradientBackground {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+      /* Background warna lembut yang bergerak */
+      body {
+        background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+        background-size: 400% 400%;
+        animation: gradientBackground 15s ease infinite;
+      }
 
-    /* Parallax effect */
-    .parallax {
-      background-attachment: fixed;
-      background-size: cover;
-      background-position: center;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: #fff;
-      backdrop-filter: blur(5px);
-    }
+      @keyframes gradientBackground {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
 
-    /* Animasi tombol */
-    .btn {
-      padding: 12px 30px;
-      border: none;
-      border-radius: 50px;
-      background-color: #ff7b9e;
-      color: white;
-      font-size: 18px;
-      cursor: pointer;
-      transition: transform 0.3s ease, background-color 0.3s ease;
-    }
+      .backdrop {
+        backdrop-filter: blur(4px);
+        background-color: rgba(255, 255, 255, 0.6);
+      }
 
-    .btn:hover {
-      transform: scale(1.1);
-      background-color: #ff477e;
-    }
+      /* Efek Parallax */
+      .parallax {
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: #fff;
+      }
 
-    /* Animasi fade-in */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 1.5s ease-in-out;
-    }
+      /* Animasi tombol */
+      .btn {
+        padding: 12px 30px;
+        border: none;
+        border-radius: 50px;
+        background-color: #ff7b9e;
+        color: white;
+        font-size: 18px;
+        cursor: pointer;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+      }
 
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+      .btn:hover {
+        transform: scale(1.1);
+        background-color: #ff477e;
+      }
 
-    /* Animasi pengetikan */
-    .typewriter {
-      overflow: hidden;
-      white-space: nowrap;
-      border-right: 3px solid pink;
-      animation: typing 3s steps(40, end), blink 0.75s step-end infinite;
-    }
+      .btn:active {
+        transform: scale(0.9);
+      }
 
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
+      /* Animasi teks */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 1.5s ease-in-out;
+      }
 
-    @keyframes blink {
-      50% { border-color: transparent }
-    }
-  </style>
-</head>
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
-<body class="font-sans">
+      /* Typewriter effect */
+      .typewriter {
+        overflow: hidden;
+        white-space: nowrap;
+        border-right: 3px solid pink;
+        animation: typing 3s steps(40, end), blink 0.75s step-end infinite;
+      }
 
-  <!-- Auto-play romantic background music -->
-  <audio autoplay loop>
-    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
+      @keyframes typing {
+        from { width: 0 }
+        to { width: 100% }
+      }
 
-  <!-- Parallax Section -->
-  <section class="parallax" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb');">
-    <div class="max-w-2xl space-y-6 fade-in visible">
-      <h1 class="text-5xl font-bold typewriter">Hai, AGNES SEREVINA SIREGAR 🌸</h1>
-      <p class="text-lg">Ada seseorang yang ingin bicara dari hati...</p>
-    </div>
-  </section>
+      @keyframes blink {
+        50% { border-color: transparent }
+      }
+    </style>
+  </head>
+  <body class="text-gray-800">
 
-  <!-- Cinta Section -->
-  <section class="min-h-screen flex flex-col items-center justify-center bg-pink-100 text-center px-6 py-10">
-    <div class="max-w-xl space-y-6 mt-4">
-      <h2 class="text-3xl md:text-4xl font-semibold fade-in">Aku, Yusuf Deardo Purba...</h2>
-      <p class="text-lg fade-in leading-relaxed">
-        Sejak kenal kamu, hatiku gak pernah sama. Kamu baik, cantik, dan selalu bikin aku kagum. Aku nulis ini bukan karena iseng, tapi karena serius.
+    <!-- Auto-play romantic background music -->
+    <audio autoplay loop>
+      <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg" />
+    </audio>
+
+    <!-- Parallax Section -->
+    <header class="parallax" style="background-image: url('https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=1740&q=80');">
+      <div class="backdrop rounded-xl p-10 text-center shadow-xl max-w-2xl">
+        <h1 class="text-4xl md:text-6xl font-bold text-pink-600 drop-shadow-sm mb-4 fade-in">Hai, AGNES SEREVINA SIREGAR 💐</h1>
+        <p class="text-lg md:text-xl text-gray-700 leading-relaxed fade-in">
+          Aku, <span class="font-semibold text-pink-500">Yusuf Deardo Purba</span>,<br />
+          Sejak kenal kamu, hatiku nggak pernah sama. Kamu baik, cantik, dan selalu bikin aku kagum. <br />
+          Aku nulis ini bukan karena iseng, tapi karena <span class="font-semibold">serius</span>.
+        </p>
+        <div class="mt-8 fade-in">
+          <a href="#jawaban" class="btn">
+            Mau nggak jadi pacarku? 💖
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Cinta Section -->
+    <section class="py-20 px-6 bg-pink-50 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-pink-600 mb-6 fade-in">Kamu itu istimewa ✨</h2>
+      <p class="max-w-2xl mx-auto text-lg text-gray-700 fade-in">
+        Gak ada kata yang cukup untuk menggambarkan betapa berartinya kamu. Aku hanya ingin
+        membuatmu bahagia setiap hari. Kalau kamu bersedia, mari kita mulai kisah cinta kita yang indah ini. 💞
       </p>
-      <p class="text-lg fade-in">Bolehkah aku menjadi alasan kamu tersenyum setiap hari?</p>
-      <button class="btn fade-in" onclick="showAnswer()">Mau gak jadi pacarku? 💖</button>
-      <div id="answer" class="mt-6 text-2xl font-bold text-green-600 fade-in hidden"></div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer -->
-  <footer class="bg-white text-center py-6">
-    <p class="text-pink-400">&copy; 2025 - Dari hati Yusuf Deardo Purba untuk AGNES 💌</p>
-  </footer>
+    <!-- Jawaban Section -->
+    <section id="jawaban" class="py-20 px-6 bg-white text-center">
+      <h3 class="text-2xl md:text-3xl font-semibold text-pink-500 mb-4 fade-in">Jawabanmu sangat berarti 💌</h3>
+      <p class="text-lg text-gray-600 mb-6 fade-in">Apapun jawabanmu, aku tetap menghargainya dan akan selalu menghormati kamu 💗</p>
+      <div class="flex justify-center gap-6">
+        <button class="btn fade-in">Ya, aku mau! 💘</button>
+        <button class="btn fade-in">Aku belum siap...</button>
+      </div>
+    </section>
 
-  <script>
-    const faders = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
+    <!-- Footer -->
+    <footer class="py-10 text-center text-sm text-gray-400">
+      Dibuat dengan ❤️ oleh Yusuf Deardo Purba — 2025
+    </footer>
+
+    <script>
+      const faders = document.querySelectorAll('.fade-in');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
       });
-    });
-    faders.forEach(fader => observer.observe(fader));
-
-    function showAnswer() {
-      const answer = document.getElementById('answer');
-      answer.textContent = "Aku juga suka kamu, Yusuf! ❤️ Iya, aku mau!";
-      answer.classList.remove('hidden');
-    }
-  </script>
-</body>
+      faders.forEach(fader => observer.observe(fader));
+    </script>
+  </body>
 </html>
