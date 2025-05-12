@@ -19,6 +19,8 @@
         justify-content: space-between;
         gap: 20px;
         padding: 20px 0;
+        flex-wrap: wrap;
+        justify-content: center;
       }
 
       .card {
@@ -26,6 +28,7 @@
         height: 280px;
         perspective: 1000px;
         cursor: pointer;
+        margin: 10px;
       }
 
       .card-inner {
@@ -37,7 +40,7 @@
         transition: transform 1s;
       }
 
-      .card:hover .card-inner {
+      .card.flipped .card-inner {
         transform: rotateY(180deg);
       }
 
@@ -65,11 +68,22 @@
         transform: rotateY(180deg);
         color: white;
       }
+
+      @media (max-width: 768px) {
+        .card-container {
+          flex-direction: column;
+          align-items: center;
+        }
+        .card {
+          width: 150px;
+          height: 210px;
+        }
+      }
     </style>
   </head>
   <body class="text-gray-800 bg-white">
     <audio id="romantic-audio" autoplay loop>
-      <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg" />
+      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg" />
     </audio>
 
     <header class="h-screen flex items-center justify-center bg-hero">
@@ -202,12 +216,11 @@
       // Fungsi untuk menangani klik kartu dan mengganti pesan
       document.querySelectorAll('.card').forEach((card, index) => {
         card.addEventListener('click', () => {
-          gsap.to(card, { scale: 0.5, duration: 0.3, ease: "power2.inOut", onComplete: () => {
-            // Mengubah teks kartu setelah animasi selesai
-            const front = card.querySelector('.card-front p');
-            front.textContent = messages[index % messages.length];
-            gsap.to(card, { scale: 1, duration: 0.3, ease: "power2.inOut" });
-          }});
+          card.classList.add('flipped'); // Flip kartu
+          
+          // Mengganti teks kartu setelah flip
+          const front = card.querySelector('.card-front p');
+          front.textContent = messages[index % messages.length];
         });
       });
     </script>
