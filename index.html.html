@@ -42,28 +42,34 @@
 </head>
 <body class="bg-white text-pink-700 font-sans">
 
-  <!-- Hero dengan Parallax -->
+  <!-- Auto-play romantic background music -->
+  <audio autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Hero Section with Parallax -->
   <section class="h-screen parallax bg-[url('https://images.unsplash.com/photo-1506744038136-46273834b3fb')] flex items-center justify-center">
-    <div class="text-center backdrop-blur-md bg-white/60 p-8 rounded-3xl shadow-xl max-w-2xl">
+    <div class="text-center backdrop-blur-md bg-white/70 p-6 rounded-3xl shadow-xl max-w-2xl">
       <h1 class="text-4xl md:text-5xl font-bold mb-4 typewriter">Hai, AGNES SEREVINA SIREGAR 🌸</h1>
       <p class="text-lg md:text-xl fade-in">Ada seseorang yang ingin bicara dari hati...</p>
     </div>
   </section>
 
-  <!-- Isi Cinta -->
-  <section class="min-h-screen flex flex-col items-center justify-center bg-pink-100 text-center px-6 py-20">
-    <div class="max-w-xl space-y-6">
+  <!-- Cinta Section (dipadatkan ke atas) -->
+  <section class="min-h-screen flex flex-col items-center justify-start bg-pink-100 text-center px-6 py-10">
+    <div class="max-w-xl space-y-6 mt-4">
       <h2 class="text-3xl md:text-4xl font-semibold fade-in">Aku, Yusuf Deardo Purba...</h2>
-      <p class="text-lg fade-in">
+      <p class="text-lg fade-in leading-relaxed">
         Sejak kenal kamu, hatiku gak pernah sama. Kamu baik, cantik, dan selalu bikin aku kagum. Aku nulis ini bukan karena iseng, tapi karena serius.
       </p>
       <p class="text-lg fade-in">Bolehkah aku menjadi alasan kamu tersenyum setiap hari?</p>
-      <button onclick="showAnswer()" class="mt-6 bg-pink-500 text-white px-8 py-3 rounded-full hover:bg-pink-600 transition-all duration-300 shadow-lg text-lg">Mau gak jadi pacarku? 💖</button>
-      <div id="answer" class="mt-8 text-2xl font-bold text-green-600 fade-in hidden"></div>
+      <button onclick="showAnswer()" class="mt-4 bg-pink-500 text-white px-8 py-3 rounded-full hover:bg-pink-600 transition-all duration-300 shadow-lg text-lg">Mau gak jadi pacarku? 💖</button>
+      <div id="answer" class="mt-6 text-2xl font-bold text-green-600 fade-in hidden"></div>
     </div>
   </section>
 
-  <!-- Penutup -->
+  <!-- Footer -->
   <footer class="bg-white text-center py-6">
     <p class="text-pink-400">&copy; 2025 - Dari hati Yusuf Deardo Purba untuk AGNES 💌</p>
   </footer>
@@ -75,7 +81,6 @@
         if (entry.isIntersecting) entry.target.classList.add('visible');
       });
     });
-
     faders.forEach(fader => observer.observe(fader));
 
     function showAnswer() {
