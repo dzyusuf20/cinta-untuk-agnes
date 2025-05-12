@@ -1,374 +1,254 @@
 <!DOCTYPE html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Untuk Agnes 💖</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-      body {
-        font-family: 'Poppins', sans-serif;
-        scroll-behavior: smooth;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Untuk Agnes 💖</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-      .love {
-        position: fixed;
-        color: #ff69b4;
-        font-size: 24px;
-        pointer-events: none;
-        animation: fall 5s linear forwards;
-        z-index: 40;
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+      background: linear-gradient(#fff0f5, #ffe4e1);
+    }
+
+    /* Parallax Section */
+    .bg-hero {
+      background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+      background-attachment: fixed;
+      background-position: center;
+      background-size: cover;
+    }
+
+    /* Sparkle Effect */
+    .sparkle {
+      position: fixed;
+      top: -10px;
+      width: 10px;
+      height: 10px;
+      background: radial-gradient(circle, white 0%, transparent 80%);
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: fall 5s linear infinite;
+      z-index: 50;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) scale(0.3);
         opacity: 0;
       }
+    }
 
-      @keyframes fall {
-        0% {
-          transform: translateY(-50px);
-          opacity: 0;
-        }
-        30% {
-          opacity: 1;
-        }
-        100% {
-          transform: translateY(100vh);
-          opacity: 0;
-        }
-      }
+    /* Card styles */
+    .card-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px 0;
+    }
 
-      .card-container {
-        display: flex;
-        justify-content: space-between;
-        gap: 20px;
-        padding: 20px 0;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
+    .card {
+      width: 180px;
+      height: 260px;
+      perspective: 1000px;
+      cursor: pointer;
+    }
 
-      .card {
-        width: 200px;
-        height: 280px;
-        perspective: 1000px;
-        cursor: pointer;
-        margin: 10px;
-      }
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
 
-      .card-inner {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        transform-style: preserve-3d;
-        transform: rotateY(0deg);
-        transition: transform 1s;
-      }
+    .card.flipped .card-inner {
+      transform: rotateY(180deg);
+    }
 
-      .card.flipped .card-inner {
-        transform: rotateY(180deg);
-      }
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      font-size: 14px;
+      text-align: center;
+    }
 
-      .card-front,
-      .card-back {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        backface-visibility: hidden;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 18px;
-        padding: 20px;
-        border-radius: 15px;
-        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-      }
+    .card-front {
+      background-color: #ffb6c1;
+    }
 
-      .card-front {
-        background-color: #ffb6c1;
-      }
+    .card-back {
+      background-color: #ff80ab;
+      color: white;
+      transform: rotateY(180deg);
+    }
 
-      .card-back {
-        background-color: #ff80ab;
-        transform: rotateY(180deg);
-        color: white;
-      }
+    /* Rainbow Text */
+    .rainbow-text {
+      background-image: linear-gradient(to right, #ff6ec4, #7873f5, #4ade80, #facc15, #fb923c, #ef4444);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: animateText 6s linear infinite;
+      background-size: 300% 100%;
+    }
 
-      @media (max-width: 768px) {
-        .card-container {
-          flex-direction: column;
-          align-items: center;
-        }
-        .card {
-          width: 150px;
-          height: 210px;
-        }
-      }
-    </style>
-  </head>
-  <body>
+    @keyframes animateText {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
 
-  <!-- SoundCloud Autoplay -->
-  <!-- Musik romantis SoundCloud (auto play & disembunyikan) -->
-<div class="fixed bottom-4 right-4 w-full max-w-xs z-50 shadow-lg rounded overflow-hidden">
-  <audio autoplay loop>
+    /* Scroll Fade-in */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: none;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Sparkle Animation -->
+<script>
+  function createSparkle() {
+    const sparkle = document.createElement('div');
+    sparkle.className = 'sparkle';
+    sparkle.style.left = Math.random() * window.innerWidth + 'px';
+    document.body.appendChild(sparkle);
+    setTimeout(() => sparkle.remove(), 5000);
+  }
+  setInterval(createSparkle, 300);
+</script>
+
+<!-- Audio Music -->
+<div class="fixed top-4 left-4 z-50">
+  <audio id="bg-music" autoplay loop controls muted playsinline>
     <source src="https://raw.githubusercontent.com/dzyusuf20/cinta-untuk-agnes/main/nothings-gonna-change-my-love-for-you-justin-bieber-ai.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
 </div>
 
-
-
-
-  <!-- Efek taburan love -->
-  <script>
-    function createLove() {
-      const love = document.createElement('div');
-      love.classList.add('love');
-      love.innerText = '💖';
-      love.style.left = Math.random() * window.innerWidth + 'px';
-      const size = Math.random() * 20 + 16;
-      love.style.fontSize = size + 'px';
-      const delay = Math.random() * 5000;
-      setTimeout(() => {
-        document.body.appendChild(love);
-        setTimeout(() => {
-          love.remove();
-        }, 5000);
-      }, delay);
-    }
-
-    for (let i = 0; i < 100; i++) {
-      createLove();
-    }
-  </script>
-
-  <!-- Konten utama -->
-  <header class="h-screen flex items-center justify-center bg-hero">
-    <div class="backdrop rounded-xl p-10 text-center shadow-xl max-w-2xl">
-      <h1 class="text-4xl md:text-6xl font-bold text-pink-600 drop-shadow-sm mb-4">Hai, AGNES SEREVINA SIREGAR 💐</h1>
-      <p class="text-lg md:text-xl text-gray-700 leading-relaxed">
-        Aku, <span class="font-semibold text-pink-500">Yusuf Deardo Purba</span>,<br />
-        Sejak kenal kamu, hatiku nggak pernah sama. Kamu baik, cantik, dan selalu bikin aku kagum. <br />
-        Aku nulis ini bukan karena iseng, tapi karena <span class="font-semibold">serius</span>.
-      </p>
-      <div class="mt-8">
-        <a
-          href="#jawaban"
-          class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300"
-        >
-          Mau nggak jadi pacarku? 💖
-        </a>
-      </div>
-    </div>
-  </header>
-
-  <section class="py-20 px-6 bg-pink-50 text-center">
-    <h2 class="text-3xl md:text-4xl font-bold text-pink-600 mb-6">Kamu itu istimewa ✨</h2>
-    <p class="max-w-2xl mx-auto text-lg text-gray-700">
-      Gak ada kata yang cukup untuk menggambarkan betapa berartinya kamu. Aku hanya ingin
-      membuatmu bahagia setiap hari. Kalau kamu bersedia, mari kita mulai kisah cinta kita yang indah ini. 💞
+<!-- Hero Section -->
+<header class="h-screen flex items-center justify-center bg-hero">
+  <div class="bg-white bg-opacity-70 backdrop-blur-md rounded-xl p-10 text-center shadow-xl max-w-2xl">
+    <h1 class="text-4xl md:text-6xl font-bold rainbow-text mb-4">Hai, AGNES SEREVINA SIREGAR 💐</h1>
+    <p class="text-lg md:text-xl text-gray-700 leading-relaxed">
+      Aku, <span class="font-semibold text-pink-500">Yusuf Deardo Purba</span>,<br>
+      Sejak kenal kamu, hatiku nggak pernah sama. Kamu baik, cantik, dan selalu bikin aku kagum.<br>
+      Aku nulis ini bukan karena iseng, tapi karena <span class="font-semibold">serius</span>.
     </p>
-  </section>
-
-  <section id="jawaban" class="py-20 px-6 bg-white text-center">
-    <h3 class="text-2xl md:text-3xl font-semibold text-pink-500 mb-4">Jawabanmu sangat berarti 💌</h3>
-    <p class="text-lg text-gray-600 mb-6">
-      Apapun jawabanmu, aku tetap menghargainya dan akan selalu menghormati kamu 💗
-    </p>
-    <div class="flex justify-center gap-6">
-      <button 
-        onclick="confirmRedirect(true)" 
-        class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full text-lg font-semibold shadow">
-        Ya, aku mau! 💘
-      </button>
-      <button 
-        onclick="confirmRedirect(false)" 
-        class="bg-gray-300 hover:bg-gray-400 text-gray-800 px-6 py-3 rounded-full text-lg font-semibold shadow">
-        Aku belum siap...
-      </button>
+    <div class="mt-8">
+      <a href="#jawaban" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300">
+        Mau nggak jadi pacarku? 💖
+      </a>
     </div>
-  </section>
+  </div>
+</header>
 
-  <script>
-    function confirmRedirect(isYes) {
-      const text = isYes 
-        ? "Kamu yakin ingin bilang 'Ya'? Ini akan membuka WhatsApp untuk ngobrol langsung denganku 💕"
-        : "Kamu belum siap? Gak apa-apa... Klik OK kalau mau ngobrol lewat WhatsApp.";
+<!-- Penegasan Cinta -->
+<section class="py-20 px-6 bg-pink-50 text-center fade-in">
+  <h2 class="text-3xl md:text-4xl font-bold text-pink-600 mb-6">Kamu itu istimewa ✨</h2>
+  <p class="max-w-2xl mx-auto text-lg text-gray-700">
+    Gak ada kata yang cukup untuk menggambarkan betapa berartinya kamu. Aku hanya ingin
+    membuatmu bahagia setiap hari. Kalau kamu bersedia, mari kita mulai kisah cinta kita yang indah ini. 💞
+  </p>
+</section>
 
-      if (confirm(text)) {
-        const phone = "6282277717787";
-        const message = isYes 
-          ? "Hai Yusuf, aku setuju! Aku mau jadi pacarmu 💖✨" 
-          : "Yusuf, aku belum siap... Tapi terima kasih ya atas semuanya 🌸";
-          
-        window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, "_blank");
-      }
-    }
-  </script>
+<!-- Jawaban -->
+<section id="jawaban" class="py-20 px-6 bg-white text-center fade-in">
+  <h3 class="text-2xl md:text-3xl font-semibold text-pink-500 mb-4">Jawabanmu sangat berarti 💌</h3>
+  <p class="text-lg text-gray-600 mb-6">
+    Apapun jawabanmu, aku tetap menghargainya dan akan selalu menghormati kamu 💗
+  </p>
+  <div class="flex flex-col sm:flex-row justify-center gap-6">
+    <button onclick="confirmRedirect(true)" class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full text-lg font-semibold shadow">
+      Ya, aku mau! 💘
+    </button>
+    <button onclick="confirmRedirect(false)" class="bg-gray-300 hover:bg-gray-400 text-gray-800 px-6 py-3 rounded-full text-lg font-semibold shadow">
+      Aku belum siap...
+    </button>
+  </div>
+</section>
 
-  <section class="py-20 px-6 text-center">
-    <h3 class="text-2xl md:text-3xl font-semibold text-pink-600 mb-4">Kartu Tarot Untukmu 💖</h3>
-    <div class="card-container">
-              <div class="card" data-card="0">
-          <div class="card-inner">
-            <div class="card-front">
-              <p>"Tantangan hidup mungkin datang, tapi bersama kita bisa menghadapinya."</p>
-            </div>
-            <div class="card-back">
-              <p>"Jangan takut untuk mencintai, karena cinta akan memberi kekuatan."</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="card" data-card="1">
-          <div class="card-inner">
-            <div class="card-front">
-              <p>"Cinta akan datang di waktu yang tepat."</p>
-            </div>
-            <div class="card-back">
-              <p>"Setiap hal memiliki waktunya, mari jalani dengan sabar."</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="card" data-card="2">
-          <div class="card-inner">
-            <div class="card-front">
-              <p>"Kesuksesan menantimu, tetap berusaha!"</p>
-            </div>
-            <div class="card-back">
-              <p>"Jangan berhenti berusaha, masa depan cerah menanti."</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="card" data-card="3">
-          <div class="card-inner">
-            <div class="card-front">
-              <p>"Aku masih menyayangimu, maukah kita mencoba lagi?"</p>
-            </div>
-            <div class="card-back">
-              <p>"Mungkin ini saatnya kita kembali menjadi kita."</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="card" data-card="4">
-          <div class="card-inner">
-            <div class="card-front">
-              <p>"Aku menghargai setiap momen kita."</p>
-            </div>
-            <div class="card-back">
-              <p>"Semoga selalu ada kebahagiaan untukmu, aku selalu mendukungmu."</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer class="py-10 text-center text-sm text-gray-400">
-    Dibuat dengan ❤️ oleh Yusuf Deardo Purba — 2025
-  </footer>
-
-  <script>
-    const messages = [
-      "Semangat dan jangan pernah menyerah!",
-      "Cinta akan datang di waktu yang tepat!",
-      "Kesuksesan menantimu, tetap berusaha!",
-      "Aku masih menyayangimu, maukah kita mencoba lagi?",
-      "Mungkin ini saatnya kita kembali menjadi kita.",
-      "Aku menghargai setiap momen kita, semoga selalu ada kebahagiaan untukmu.",
-      "Jangan ragu untuk bertindak, keberhasilan menantimu!",
-      "Berusahalah, karena setiap usaha pasti ada hasilnya.",
-      "Cinta adalah petualangan yang indah, mari kita jalani bersama!",
-      "Sabar itu indah, dan cinta akan datang ketika waktunya tepat.",
-      "Kamu punya kekuatan untuk mengatasi segala tantangan.",
-      "Mari kita berjalan bersama menuju masa depan yang lebih cerah.",
-      "Jangan takut mencoba, karena kegagalan adalah bagian dari perjalanan.",
-      "Aku akan selalu mendukungmu, apapun yang terjadi.",
-      "Jangan takut untuk berubah, karena perubahan membawa kebaikan.",
-      "Kamu lebih kuat dari yang kamu kira, percaya pada dirimu.",
-      "Cinta itu indah, dan aku ingin berbagi keindahan itu denganmu.",
-      "Kesuksesan bukan hanya tentang hasil, tapi juga perjalanan.",
-      "Tantangan adalah kesempatan untuk tumbuh dan belajar.",
-      "Mimpi besar bisa tercapai dengan langkah kecil yang konsisten."
-    ];
-
-    document.querySelectorAll('.card').forEach((card, index) => {
-      card.addEventListener('click', () => {
-        card.classList.add('flipped');
-        const front = card.querySelector('.card-front p');
-        front.textContent = messages[index % messages.length];
-      });
-    });
-  </script>
-  <style>
-  .heart {
-    position: fixed;
-    width: 20px;
-    height: 20px;
-    background-color: pink;
-    transform: rotate(45deg);
-    animation: fall 5s linear;
-    z-index: 9999;
-    opacity: 0.8;
-  }
-
-  .heart::before,
-  .heart::after {
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: pink;
-    border-radius: 50%;
-  }
-
-  .heart::before {
-    top: -10px;
-    left: 0;
-  }
-
-  .heart::after {
-    left: -10px;
-    top: 0;
-  }
-
-  @keyframes fall {
-    0% {
-      transform: translateY(-100px) rotate(45deg);
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(100vh) rotate(45deg);
-      opacity: 0;
-    }
-  }
-</style>
-
+<!-- Script Konfirmasi -->
 <script>
-  // Fungsi untuk membuat satu hati jatuh
-  function createHeart() {
-    const heart = document.createElement('div');
-    heart.classList.add('heart');
-    heart.style.left = Math.random() * 100 + 'vw';
-    heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
-    document.body.appendChild(heart);
-
-    setTimeout(() => {
-      heart.remove();
-    }, 5000);
+  function confirmRedirect(isYes) {
+    const text = isYes 
+      ? "Yakin mau bilang 'Ya'? Ini akan buka WhatsApp buat ngobrol langsung sama aku 💕"
+      : "Kamu belum siap? Gak apa-apa... Klik OK kalau mau tetap ngobrol di WhatsApp.";
+    if (confirm(text)) {
+      const phone = "6282277717787";
+      const message = isYes 
+        ? "Hai Yusuf, aku setuju! Aku mau jadi pacarmu 💖✨" 
+        : "Yusuf, aku belum siap... Tapi terima kasih ya atas semuanya 🌸";
+      window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, "_blank");
+    }
   }
+</script>
 
-  // Hanya jalankan efek selama 5 detik
-  const duration = 5000;
-  const interval = 200;
+<!-- Kartu Tarot -->
+<section class="py-20 px-6 text-center fade-in">
+  <h3 class="text-2xl md:text-3xl font-semibold text-pink-600 mb-4">Kartu Tarot Untukmu 💖</h3>
+  <div class="card-container">
+    <!-- ulangi 5x -->
+    <div class="card"><div class="card-inner"><div class="card-front">"Tantangan hidup mungkin datang..."</div><div class="card-back">"Cinta memberi kekuatan."</div></div></div>
+    <div class="card"><div class="card-inner"><div class="card-front">"Cinta akan datang di waktu tepat."</div><div class="card-back">"Mari jalani dengan sabar."</div></div></div>
+    <div class="card"><div class="card-inner"><div class="card-front">"Kesuksesan menantimu."</div><div class="card-back">"Masa depan cerah menanti."</div></div></div>
+    <div class="card"><div class="card-inner"><div class="card-front">"Aku masih menyayangimu."</div><div class="card-back">"Saatnya kembali jadi kita."</div></div></div>
+    <div class="card"><div class="card-inner"><div class="card-front">"Aku menghargai momen kita."</div><div class="card-back">"Selalu dukungmu."</div></div></div>
+  </div>
+</section>
 
-  const intervalId = setInterval(createHeart, interval);
+<!-- Footer -->
+<footer class="py-10 text-center text-sm text-gray-400">
+  Dibuat dengan ❤️ oleh Yusuf Deardo Purba — 2025
+</footer>
 
-  setTimeout(() => {
-    clearInterval(intervalId);
-  }, duration);
+<!-- Flip card -->
+<script>
+  document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('click', () => {
+      card.classList.toggle('flipped');
+    });
+  });
+</script>
+
+<!-- Scroll Animasi -->
+<script>
+  const faders = document.querySelectorAll('.fade-in');
+  const appearOptions = { threshold: 0.3 };
+  const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    });
+  }, appearOptions);
+  faders.forEach(fader => {
+    appearOnScroll.observe(fader);
+  });
 </script>
 
 </body>
