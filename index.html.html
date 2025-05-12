@@ -133,7 +133,7 @@
       opacity: 1;
       transform: none;
     }
-      .love-video {
+  .love-video {
     max-width: 300px;
     width: 90%;
     opacity: 0;
@@ -143,6 +143,9 @@
     display: block;
     border-radius: 16px;
     box-shadow: 0 8px 24px rgba(255, 0, 128, 0.2);
+    background: rgba(255, 192, 203, 0.2); /* Soft pink background */
+    backdrop-filter: blur(8px); /* Blur belakang */
+    padding: 8px; /* Spasi dalam */
   }
 
   .love-video.show {
@@ -197,10 +200,11 @@
     Gak ada kata yang cukup untuk menggambarkan betapa berartinya kamu. Aku hanya ingin
     membuatmu bahagia setiap hari. Kalau kamu bersedia, mari kita mulai kisah cinta kita yang indah ini. 💞
   </p>
-  <video id="loveVideo" class="love-video" autoplay muted loop playsinline>
-  <source src="154135-807166717_medium_5.mp4" type="video/mp4" />
+<video id="loveVideo" class="love-video" autoplay muted loop playsinline>
+  <source src="miloismillo.mp4" type="video/mp4" />
   Browser kamu tidak mendukung video.
 </video>
+
 
 <script>
   // Transisi muncul saat halaman dimuat
