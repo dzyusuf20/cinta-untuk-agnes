@@ -317,6 +317,9 @@
   <button id="toggleNightMode" class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-full">
     🌙
   </button>
+  <button id="play-music-btn" class="fixed top-4 left-4 z-50 bg-pink-400 text-white px-4 py-2 rounded-full shadow-lg hover:bg-pink-500 transition">
+  💖 Putar Musik
+</button>
 </div>
 
 <!-- Sparkle Animation -->
@@ -332,26 +335,10 @@
 </script>
 
 <div class="fixed top-4 left-4 z-50 hidden">
-  <audio id="bg-music" loop playsinline>
-    <source src="https://raw.githubusercontent.com/dzyusuf20/cinta-untuk-agnes/main/nothings-gonna-change-my-love-for-you-justin-bieber-ai.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio>
-</div>
-
-<script>
-  // Memutar musik setelah interaksi pertama pengguna
-  document.addEventListener('DOMContentLoaded', function () {
-    const music = document.getElementById('bg-music');
-
-    function playMusic() {
-      music.play().catch(e => console.log('Autoplay blocked:', e));
-      document.removeEventListener('click', playMusic); // hanya sekali
-    }
-
-    document.addEventListener('click', playMusic);
-  });
-</script>
-
+<audio id="bg-music" loop playsinline>
+  <source src="https://raw.githubusercontent.com/dzyusuf20/cinta-untuk-agnes/main/nothings-gonna-change-my-love-for-you-justin-bieber-ai.mp3" type="audio/mp3">
+  Your browser does not support the audio element.
+</audio>
 
 <!-- Hero Section -->
 <header class="min-h-screen flex items-center justify-center bg-hero">
@@ -425,6 +412,23 @@
       window.location.href = 'https://wa.me/6282277717787?text=Tidak%2C%20saya%20belum%20siap%20%3A%29';
     }
   }
+</script>
+<script>
+  const playBtn = document.getElementById('play-music-btn');
+  const music = document.getElementById('bg-music');
+
+  playBtn.addEventListener('click', () => {
+    music.play()
+      .then(() => {
+        playBtn.textContent = '🎵 Musik Berjalan';
+        playBtn.disabled = true;
+        playBtn.classList.add('opacity-70', 'cursor-not-allowed');
+      })
+      .catch(e => {
+        alert('Gagal memutar musik, coba klik lagi.');
+        console.log(e);
+      });
+  });
 </script>
 
 
