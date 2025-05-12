@@ -1,93 +1,56 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Untuk Agnes</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    .parallax {
-      background-attachment: fixed;
-      background-size: cover;
-      background-position: center;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Untuk Agnes 💖</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        background: linear-gradient(to bottom, #ffe6f0, #ffffff);
+        background-attachment: fixed;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+      .parallax {
+        background-image: url('https://images.unsplash.com/photo-1520975912203-8c768c4c7d48?auto=format&fit=crop&w=1470&q=80');
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center;
+      }
+    </style>
+  </head>
+  <body>
+    <audio autoplay loop>
+      <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg" />
+    </audio>
 
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 1.2s ease-in-out;
-    }
+    <section class="h-screen flex items-center justify-center parallax">
+      <div class="text-center text-white drop-shadow-xl">
+        <h1 class="text-4xl md:text-6xl font-bold mb-4">Hai, AGNES SEREVINA SIREGAR 💐</h1>
+        <p class="text-xl md:text-2xl max-w-xl mx-auto">
+          Aku, Yusuf Deardo Purba...<br />
+          Sejak kenal kamu, hatiku gak pernah sama. Kamu baik, cantik, dan selalu bikin aku kagum.<br />
+          Aku nulis ini bukan karena iseng, tapi karena serius.<br />
+          <span class="font-bold text-pink-300">Bolehkah aku menjadi alasan kamu tersenyum setiap hari?</span>
+        </p>
+        <div class="mt-10">
+          <a
+            href="#"
+            class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition duration-300"
+          >
+            Mau gak jadi pacarku? 💖
+          </a>
+        </div>
+      </div>
+    </section>
 
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .typewriter {
-      overflow: hidden;
-      white-space: nowrap;
-      border-right: 3px solid pink;
-      animation: typing 3s steps(40, end), blink .75s step-end infinite;
-    }
-
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
-
-    @keyframes blink {
-      50% { border-color: transparent }
-    }
-  </style>
-</head>
-<body class="bg-white text-pink-700 font-sans">
-
-  <!-- Auto-play romantic background music -->
-  <audio autoplay loop>
-    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
-
-  <!-- Hero Section with Parallax -->
-  <section class="h-screen parallax bg-[url('https://images.unsplash.com/photo-1506744038136-46273834b3fb')] flex items-center justify-center">
-    <div class="text-center backdrop-blur-md bg-white/70 p-6 rounded-3xl shadow-xl max-w-2xl">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4 typewriter">Hai, AGNES SEREVINA SIREGAR 🌸</h1>
-      <p class="text-lg md:text-xl fade-in">Ada seseorang yang ingin bicara dari hati...</p>
-    </div>
-  </section>
-
-  <!-- Cinta Section (dipadatkan ke atas) -->
-  <section class="min-h-screen flex flex-col items-center justify-start bg-pink-100 text-center px-6 py-10">
-    <div class="max-w-xl space-y-6 mt-4">
-      <h2 class="text-3xl md:text-4xl font-semibold fade-in">Aku, Yusuf Deardo Purba...</h2>
-      <p class="text-lg fade-in leading-relaxed">
-        Sejak kenal kamu, hatiku gak pernah sama. Kamu baik, cantik, dan selalu bikin aku kagum. Aku nulis ini bukan karena iseng, tapi karena serius.
+    <section class="py-20 px-6 bg-white text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-pink-500 mb-6">Karena kamu istimewa ✨</h2>
+      <p class="max-w-2xl mx-auto text-gray-700 text-lg">
+        Gak ada kata yang cukup untuk menggambarkan betapa berartinya kamu.
+        Aku hanya ingin membuatmu bahagia, setiap hari, setiap waktu.
+        Kalau kamu bersedia, mari mulai kisah indah kita bersama 💞
       </p>
-      <p class="text-lg fade-in">Bolehkah aku menjadi alasan kamu tersenyum setiap hari?</p>
-      <button onclick="showAnswer()" class="mt-4 bg-pink-500 text-white px-8 py-3 rounded-full hover:bg-pink-600 transition-all duration-300 shadow-lg text-lg">Mau gak jadi pacarku? 💖</button>
-      <div id="answer" class="mt-6 text-2xl font-bold text-green-600 fade-in hidden"></div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-white text-center py-6">
-    <p class="text-pink-400">&copy; 2025 - Dari hati Yusuf Deardo Purba untuk AGNES 💌</p>
-  </footer>
-
-  <script>
-    const faders = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    });
-    faders.forEach(fader => observer.observe(fader));
-
-    function showAnswer() {
-      const answer = document.getElementById('answer');
-      answer.textContent = "Aku juga suka kamu, Yusuf! ❤️ Iya, aku mau!";
-      answer.classList.remove('hidden');
-    }
-  </script>
-</body>
+    </section>
+  </body>
 </html>
